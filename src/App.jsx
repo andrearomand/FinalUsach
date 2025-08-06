@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Main from './components/Main';
+import './styles/app.scss';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,14 +46,7 @@ function App() {
   }, []);
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      background: '#f5f6fa',
-      paddingTop: '80px',
-      paddingBottom: '70px'
-    }}>
+    <div className="app-container">
       <Navbar />
       <Main
         searchTerm={searchTerm}
@@ -69,69 +64,33 @@ function App() {
 
       {/* Modal de favoritos */}
       {showFavoritos && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          background: 'rgba(0,0,0,0.5)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 2000
-        }}
-          onClick={() => setShowFavoritos(false)}
-        >
-          <div
-            style={{
-              background: '#fff',
-              borderRadius: 12,
-              maxWidth: 420,
-              width: '90%',
-              padding: 28,
-              boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
-              position: 'relative',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center'
-            }}
-            onClick={e => e.stopPropagation()}
-          >
+        <div className="favoritos-modal-bg" onClick={() => setShowFavoritos(false)}>
+          <div className="favoritos-modal" onClick={e => e.stopPropagation()}>
             <button
+              className="favoritos-close-btn"
               onClick={() => setShowFavoritos(false)}
-              style={{
-                position: 'absolute',
-                top: 10,
-                right: 10,
-                background: 'transparent',
-                border: 'none',
-                fontSize: 26,
-                cursor: 'pointer',
-                color: '#888'
-              }}
               aria-label="Cerrar"
             >
               ×
             </button>
-            <h2 style={{ marginTop: 0, marginBottom: 18, textAlign: 'center', color: '#c1121f' }}>Lista de Favoritos</h2>
+            <h2 className="favoritos-title">Lista de Favoritos</h2>
             {favoritos.length === 0 ? (
-              <p style={{ color: '#555', fontSize: 16 }}>No hay películas favoritas.</p>
+              <p className="favoritos-empty">No hay películas favoritas.</p>
             ) : (
-              <ul style={{ listStyle: 'none', padding: 0, width: '100%' }}>
+              <ul className="favoritos-list">
                 {favoritos.map((movie) => (
-                  <li key={movie.id} style={{ marginBottom: 12, display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer' }}
+                  <li key={movie.id} className="favoritos-item"
                       onClick={() => {
                         setSelectedMovie(movie);
                         setShowFavoritos(false);
                       }}
                   >
                     {movie.poster_path ? (
-                      <img src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} alt={movie.title} style={{ width: 40, height: 60, objectFit: 'cover', borderRadius: 4 }} />
+                      <img src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} alt={movie.title} className="favoritos-img" />
                     ) : (
-                      <div style={{ width: 40, height: 60, background: '#eee', borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#888', fontSize: 12 }}>Sin imagen</div>
+                      <div className="favoritos-img-placeholder">Sin imagen</div>
                     )}
-                    <span style={{ fontWeight: 500 }}>{movie.title}</span>
+                    <span className="favoritos-movie-title">{movie.title}</span>
                   </li>
                 ))}
               </ul>

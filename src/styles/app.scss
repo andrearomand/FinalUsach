@@ -1,0 +1,96 @@
+// Estilos extraídos de App.jsx
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f6fa;
+  padding-top: 80px;
+  padding-bottom: 70px;
+}
+
+.favoritos-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.favoritos-modal {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  padding: 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favoritos-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #888;
+}
+
+.favoritos-title {
+  margin-top: 0;
+  margin-bottom: 18px;
+  text-align: center;
+  color: #c1121f;
+}
+
+.favoritos-empty {
+  color: #555;
+  font-size: 16px;
+}
+
+.favoritos-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.favoritos-item {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.favoritos-img {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.favoritos-img-placeholder {
+  width: 40px;
+  height: 60px;
+  background: #eee;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 12px;
+}
+
+.favoritos-movie-title {
+  font-weight: 500;
+}
