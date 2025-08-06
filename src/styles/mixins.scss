@@ -1,0 +1,15 @@
+// Mixins reutilizables para SASS
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-shadow {
+  box-shadow: $shadow;
+  transition: box-shadow 0.2s;
+}
+
+@mixin card-hover-shadow {
+  box-shadow: $shadow-hover;
+}

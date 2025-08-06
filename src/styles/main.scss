@@ -1,0 +1,391 @@
+@import 'variables';
+
+// Estilos globales y de componentes migrados desde index.css
+
+:root {
+  font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/peliculas-terror.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+// Card de película
+.movie-card {
+  background: #fff;
+  border-radius: $card-radius;
+  box-shadow: $shadow;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 340px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: $shadow-hover;
+  border: none;
+  z-index: 2;
+}
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 154/224;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: block;
+}
+.movie-noimage {
+  width: 100%;
+  height: 270px;
+  background: #eee;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 16px;
+}
+.movie-title {
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  text-align: center;
+  font-weight: 600;
+}
+.movie-year {
+  font-size: 15px;
+  color: #555;
+  text-align: center;
+  margin: 0;
+}
+
+// Input y botón responsivos para el buscador
+.input-buscar {
+  padding: 12px;
+  width: 70%;
+  max-width: 400px;
+  margin-right: 12px;
+  margin-bottom: 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  text-align: center;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.btn-buscar {
+  background: $secondary;
+  color: #fff;
+  border-radius: 8px;
+  border: 1px solid $secondary;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  width: 90px;
+  max-width: none;
+  margin-left: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-buscar:hover, .btn-buscar:focus {
+  background: $primary;
+  color: #fff;
+  border-color: $primary;
+  box-shadow: 0 0 16px 4px rgba(177, 25, 250, 0.25);
+  filter: brightness(1.15);
+}
+
+// Navbar
+.navbar-app {
+  width: 100%;
+  background: $secondary;
+  padding: 1.2rem 0;
+  margin-bottom: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 16px;
+}
+.navbar-logo {
+  height: 280px;
+  width: 280px;
+  object-fit: contain;
+  margin-left: 0;
+  margin-bottom: -90px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  z-index: 2100;
+  position: relative;
+}
+.navbar-title {
+  color: #fff;
+  text-align: center !important;
+  margin: 0 auto !important;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  word-break: break-word;
+  width: 100% !important;
+  display: block !important;
+}
+
+// Footer
+.footer-app {
+  width: 100%;
+  background: $secondary;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 16px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2000;
+}
+
+// Grid de películas
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+
+// Media queries
+@media (max-width: 600px) {
+  .form-buscar {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0;
+  }
+  .input-buscar {
+    width: 70%;
+    max-width: 400px;
+    margin-right: 12px;
+    margin-bottom: 0;
+  }
+  .btn-buscar {
+    width: 64px;
+    max-width: none;
+    margin-left: 0;
+    font-size: 15px;
+    padding: 10px 16px;
+    height: 38px;
+  }
+  .navbar-app {
+    padding: 0.7rem 0;
+  }
+  .navbar-content {
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .navbar-logo {
+    height: 160px;
+    width: 160px;
+    margin-bottom: -48px;
+  }
+  .navbar-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+  .footer-app {
+    font-size: 13px;
+    padding: 0.7rem 0.2rem;
+    position: sticky;
+    left: unset;
+    bottom: 0;
+  }
+}
+@media (max-width: 899px) {
+  .input-buscar {
+    width: 80%;
+    max-width: 320px;
+    font-size: 16px;
+    padding: 11px;
+    margin-right: 10px;
+  }
+  .btn-buscar {
+    font-size: 16px;
+    padding: 11px 20px;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 28px !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .movie-card {
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  .navbar-title {
+    text-align: center !important;
+    width: 100vw !important;
+    margin: 0 auto 8px auto !important;
+    display: block !important;
+    font-size: 1.4rem !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  .footer-app {
+    text-align: center !important;
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+}
+@media (max-width: 899px) {
+  main {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}
+@media (max-width: 599px) {
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px !important;
+  }
+}
+@media (min-width: 900px) {
+  .movies-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 28px !important;
+  }
+}
+@media (max-width: 375px) {
+  .movies-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .movies-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  .btn-buscar {
+    font-size: 13px;
+    padding: 6px 10px;
+    width: 70px;
+    height: 32px;
+    margin-left: 6px;
+  }
+}
+
+// Links
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+// Importar fuente Roboto
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+// Preferencias de color
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+@media (max-width: 600px) {
+  .navbar-logo {
+    height: 112px;
+    width: 112px;
+    margin-bottom: 0;
+    margin-top: 4px;
+    display: block;
+  }
+  .navbar-title {
+    font-size: 1.3rem !important;
+    letter-spacing: 0.5px !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto 8px auto !important;
+    display: block !important;
+  }
+}
